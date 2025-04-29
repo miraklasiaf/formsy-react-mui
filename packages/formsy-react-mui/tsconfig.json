@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2016", // Target modern JS features supported by recent browsers/Node
+    "module": "ESNext", // Use modern ES module syntax
+    "jsx": "react-jsx", // Use the new JSX transform
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // Include standard browser and ESNext libs
+    "declaration": true, // Generate .d.ts declaration files
+    "declarationDir": "dist/types", // Output directory for declaration files
+    "outDir": "dist", // Output directory for compiled JS (though Rollup handles final output)
+    "rootDir": "src", // Source files directory
+    "strict": true, // Enable all strict type-checking options
+    "moduleResolution": "node", // How modules get resolved
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+    "esModuleInterop": true, // Enables compatibility with CommonJS modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references
+    "isolatedModules": true, // Ensure files can be safely transpiled without relying on other files
+    "resolveJsonModule": true, // Allow importing JSON files
+    "noEmit": true // Prevent tsc from emitting files; Rollup will handle bundling/transpilation
+    // Use "noEmit": false if you want tsc to emit JS files alongside Rollup (less common for libraries)
+  },
+  "include": ["src/**/*"], // Files to include in compilation
+  "exclude": ["node_modules", "dist"] // Folders to exclude
+}

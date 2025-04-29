@@ -1,0 +1,63 @@
+{
+  "name": "formsy-react-mui",
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "rollup -c rollup.config.mjs",
+    "dev": "rollup -c rollup.config.mjs -w"
+  },
+  "keywords": [
+    "formsy-react",
+    "react",
+    "mui",
+    "material-ui"
+  ],
+  "author": "Faisal Karim",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miraklasiaf/formsy-react-mui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/miraklasiaf/formsy-react-mui/issues"
+  },
+  "homepage": "https://github.com/miraklasiaf/formsy-react-mui#readme",
+  "packageManager": "pnpm@10.9.0",
+  "devDependencies": {
+    "@mui/material": "^7.0.2",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/node": "^22.15.2",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "formsy-react": "^2.3.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "rollup": "^4.40.1",
+    "rollup-plugin-dts": "^6.2.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "@mui/material": "^7.0.2",
+    "formsy-react": "^2.3.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
