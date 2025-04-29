@@ -1,7 +1,7 @@
 {
   "name": "formsy-react-mui",
   "version": "0.1.0",
-  "description": "",
+  "description": "A compatibility wrapper for Material-UI form components to work with formsy-react",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -30,7 +30,8 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miraklasiaf/formsy-react-mui.git"
+    "url": "git+https://github.com/miraklasiaf/formsy-react-mui.git",
+    "directory": "packages/formsy-react-mui"
   },
   "bugs": {
     "url": "https://github.com/miraklasiaf/formsy-react-mui/issues"

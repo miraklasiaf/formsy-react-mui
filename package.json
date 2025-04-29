@@ -1,14 +1,13 @@
 {
   "name": "formsy-react-mui-monorepo",
+  "private": true,
   "version": "0.1.0",
-  "description": "",
+  "author": "Faisal Karim",
+  "license": "MIT",
   "scripts": {
     "dev": "pnpm -r dev",
     "build": "pnpm -r build",
     "preview": "pnpm -r preview"
   },
-  "keywords": [],
-  "author": "Faisal Karim",
-  "license": "MIT",
   "packageManager": "pnpm@10.9.0"
 }
