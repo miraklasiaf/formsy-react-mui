@@ -1,26 +1,75 @@
 import { withFormsy } from 'formsy-react';
-import TextField from '@mui/material/TextField';
-import { TextFieldProps } from '@mui/material/TextField';
+import { TextField, TextFieldProps } from '@mui/material';
 
 type Props = TextFieldProps & {
-  name: string;
-  setValue?: (value: any) => void;
-  value?: any;
   errorMessage?: string;
   isPristine?: boolean;
-  showError?: boolean;
+  setValue: (value: any) => void;
+  showRequired?: boolean;
 };
 
 function TextFieldFormsy(props: Props) {
-  const { type = 'text', variant = 'outlined', name, label, showError } = props;
+  const {
+    autoComplete,
+    autoFocus,
+    children,
+    className,
+    defaultValue,
+    disabled,
+    fullWidth,
+    id,
+    inputRef,
+    label,
+    multiline,
+    name,
+    onBlur,
+    onChange,
+    onFocus,
+    placeholder,
+    required,
+    rows,
+    maxRows,
+    minRows,
+    select,
+    slotProps,
+    type = 'text',
+    variant = 'outlined',
+    color,
+  } = props;
 
+  const { errorMessage, isPristine, showRequired } = props;
   const value = props.value || '';
-  const errorMessage = props.errorMessage;
 
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
-    if (props.setValue) {
-      props.setValue(event.currentTarget.value);
-    }
+  const importedProps = {
+    autoComplete,
+    autoFocus,
+    children,
+    className,
+    color,
+    defaultValue,
+    disabled,
+    fullWidth,
+    id,
+    inputRef,
+    label,
+    multiline,
+    maxRows,
+    minRows,
+    name,
+    onBlur,
+    onChange,
+    onFocus,
+    placeholder,
+    required,
+    rows,
+    select,
+    slotProps,
+    type,
+    variant,
+  };
+
+  function changeValue(event: React.ChangeEvent<HTMLInputElement>) {
+    props.setValue(event.currentTarget.value);
     if (props.onChange) {
       props.onChange(event);
     }
@@ -28,15 +77,11 @@ function TextFieldFormsy(props: Props) {
 
   return (
     <TextField
-      fullWidth
-      type={type}
-      variant={variant}
-      name={name}
-      label={label}
+      {...importedProps}
+      onChange={changeValue}
       value={value}
-      onChange={onChange}
-      error={Boolean(showError && errorMessage)}
-      helperText={showError && errorMessage}
+      error={Boolean((!isPristine && showRequired) || errorMessage)}
+      helperText={errorMessage}
     />
   );
 }
