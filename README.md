@@ -1,7 +1,5 @@
 # Formsy React MUI
 
-## About
-
 This project simplifies the use of [`formsy-react`](https://github.com/formsy-react/formsy-react)
 and [`Material-UI`](https://github.com/mui/material-ui). It provides opinionated use cases with following
 components:

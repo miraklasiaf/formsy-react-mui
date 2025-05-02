@@ -14,6 +14,7 @@ function TextFieldFormsy(props: Props) {
     autoFocus,
     children,
     className,
+    color,
     defaultValue,
     disabled,
     fullWidth,
@@ -34,7 +35,6 @@ function TextFieldFormsy(props: Props) {
     slotProps,
     type = 'text',
     variant = 'outlined',
-    color,
   } = props;
 
   const { errorMessage, isPristine, showRequired } = props;

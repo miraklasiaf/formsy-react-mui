@@ -10,7 +10,12 @@ import {
   Radio,
   Typography,
 } from '@mui/material';
-import { Form, RadioGroupFormsy, TextFieldFormsy } from 'formsy-react-mui';
+import {
+  FormsyContainer,
+  CheckboxFormsy,
+  RadioGroupFormsy,
+  TextFieldFormsy,
+} from 'formsy-react-mui';
 import { Panel } from './panel';
 import isEmpty from 'lodash-es/isEmpty';
 
@@ -20,10 +25,13 @@ export default function Home() {
   function validate(model) {
     let sb = {};
     if (!model.fullName) {
-      sb.fullName = 'Please fill in Full Name.';
+      sb.fullName = 'This field is required.';
     }
     if (!model.genderId) {
-      sb.genderId = 'Please select Gender.';
+      sb.genderId = 'This field is required.';
+    }
+    if (!model.acceptTos) {
+      sb.acceptTos = 'This field is required.';
     }
     return sb;
   }
@@ -46,7 +54,7 @@ export default function Home() {
     <Container maxWidth="xl" sx={{ marginTop: '28px' }}>
       <Grid container spacing={2}>
         <Grid size={7}>
-          <Form autoComplete="off" onChange={onChange} onSubmit={onSubmit}>
+          <FormsyContainer autoComplete="off" onChange={onChange} onSubmit={onSubmit}>
             <Panel panelTitle="Form Example">
               <CardContent>
                 <Grid container spacing={2}>
@@ -54,12 +62,13 @@ export default function Home() {
                     <TextFieldFormsy value="" name="fullName" label="Full Name" />
                   </Grid>
                   <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-                    <RadioGroupFormsy value="" label="Gender" name="genderId">
-                      <div className="MuiGrid-justify-xs-space-between">
-                        <FormControlLabel value="1" control={<Radio />} label="Male" />
-                        <FormControlLabel value="2" control={<Radio />} label="Female" />
-                      </div>
+                    <RadioGroupFormsy value="" name="genderId" label="Gender" row>
+                      <FormControlLabel value="1" control={<Radio />} label="Male" />
+                      <FormControlLabel value="2" control={<Radio />} label="Female" />
                     </RadioGroupFormsy>
+                  </Grid>
+                  <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+                    <CheckboxFormsy value="" name="acceptTos" label="I Accept the TOS" />
                   </Grid>
                 </Grid>
               </CardContent>
@@ -81,7 +90,7 @@ export default function Home() {
                 </Grid>
               </CardActions>
             </Panel>
-          </Form>
+          </FormsyContainer>
         </Grid>
         <Grid size={5}>
           <div className="p-6">

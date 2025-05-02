@@ -12,10 +12,8 @@ type Props = RadioGroupProps & {
 };
 
 function RadioGroupFormsy(props: Props) {
-  const { children, color, defaultValue, name, onBlur, onChange, onKeyDown, variant } = props;
-
-  const { errorMessage, isPristine, showRequired } = props;
-  const value = props.value || '';
+  const { children, color, defaultValue, name, onBlur, onChange, onKeyDown, row, variant } = props;
+  const { errorMessage, value, isPristine, showRequired } = props;
 
   const importedProps = {
     children,
@@ -25,6 +23,7 @@ function RadioGroupFormsy(props: Props) {
     onBlur,
     onChange,
     onKeyDown,
+    row,
     variant,
   };
 
@@ -40,8 +39,8 @@ function RadioGroupFormsy(props: Props) {
       error={Boolean((!isPristine && showRequired) || errorMessage)}
       className={props.className}
     >
-      <FormControl component="fieldset" required={props.required} error={Boolean(errorMessage)}>
-        {props.label && <FormLabel component="legend">{props.label}</FormLabel>}
+      <FormControl required={props.required} error={Boolean(errorMessage)}>
+        {props.label && <FormLabel>{props.label}</FormLabel>}
         <RadioGroup {...importedProps} value={value || null} onChange={changeValue} />
         {Boolean(errorMessage) && <FormHelperText>{errorMessage}</FormHelperText>}
       </FormControl>

@@ -3,7 +3,7 @@ import { FormsyProps } from 'formsy-react/dist/Formsy';
 
 type Props = FormsyProps;
 
-function Form(props: Props) {
+function FormsyContainer(props: Props) {
   const { onSubmit, children, ...rest } = props;
 
   return (
@@ -13,4 +13,4 @@ function Form(props: Props) {
   );
 }
 
-export default Form;
+export default FormsyContainer;
