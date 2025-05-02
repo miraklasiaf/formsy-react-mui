@@ -1,16 +1,26 @@
 # Formsy React MUI
 
-## Installation
+## About
 
-To use Formsy React MUI components, all you need to do is install the
-`formsy-react-mui` package and its peer dependencies:
+This project simplifies the use of [`formsy-react`](https://github.com/formsy-react/formsy-react)
+and [`Material-UI`](https://github.com/mui/material-ui). It provides opinionated use cases with following
+components:
+
+- FormContainer
+- TextFieldFormsy
+- RadioGroupFormsy
+- TBD
+
+## How to use it
+
+### Installation
 
 ```sh
+# with npm
+$ npm install formsy-react-mui formsy-react @mui/material
+
 # with Yarn
 $ yarn add formsy-react-mui formsy-react @mui/material
-
-# with npm
-$ npm i formsy-react-mui formsy-react @mui/material
 
 # with pnpm
 $ pnpm add formsy-react-mui formsy-react @mui/material
