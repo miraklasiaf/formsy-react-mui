@@ -1,12 +1,12 @@
 import { withFormsy } from 'formsy-react';
 import {
+  Checkbox,
   FormControl,
   FormControlLabel,
+  FormGroup,
   FormHelperText,
   FormLabel,
-  Radio,
-  RadioGroup,
-  RadioGroupProps,
+  CheckboxProps,
 } from '@mui/material';
 
 type Option = {
@@ -15,27 +15,33 @@ type Option = {
   disabled?: boolean;
 };
 
-type Props = RadioGroupProps & {
-  disabled?: boolean;
-  label?: string;
+type Props = CheckboxProps & {
+  label: string;
   options?: Option[];
   required?: boolean;
+  row?: boolean;
   //formsy-react props
   errorMessage?: string;
   isPristine?: boolean;
   setValue: (value: any) => void;
   showRequired?: boolean;
-  value?: any;
+  value?: any[];
 };
 
-function RadioGroupFormsy(props: Props) {
-  const { defaultValue, disabled, label, name, options = [], row } = props;
-  const { errorMessage, value } = props;
+function CheckboxGroupFormsy(props: Props) {
+  const { label, options = [], row } = props;
+  const { errorMessage, value = [] } = props;
 
-  function changeValue(event: React.ChangeEvent<HTMLInputElement>, val: string) {
-    props.setValue(val);
+  function changeValue(event: React.ChangeEvent<HTMLInputElement>) {
+    let newValue = [...value];
+    if (event.target.checked) {
+      newValue.push(event.target.value);
+    } else {
+      newValue = value.filter((item) => item !== event.target.value);
+    }
+    props.setValue(newValue);
     if (props.onChange) {
-      props.onChange(event, event.target.value);
+      props.onChange(event, event.target.checked);
     }
   }
 
@@ -46,37 +52,32 @@ function RadioGroupFormsy(props: Props) {
       className={props.className}
     >
       {label && <FormLabel component="legend">{label}</FormLabel>}
-      <RadioGroup
-        row={row}
-        defaultValue={defaultValue}
-        name={name}
-        onChange={changeValue}
-        value={value}
-      >
+      <FormGroup row={row}>
         {options.map((option) => {
           const optionValue = option.value;
           const optionLabel = option.label;
           const optionDisabled = option.disabled || false;
-          const checked = value ? value === optionValue : false;
+          const checked = value ? value.includes(optionValue) : false;
 
           return (
             <FormControlLabel
               key={optionValue}
               control={
-                <Radio
+                <Checkbox
                   value={optionValue}
                   checked={checked}
-                  disabled={disabled || optionDisabled}
+                  onChange={changeValue}
+                  disabled={optionDisabled}
                 />
               }
               label={optionLabel}
             />
           );
         })}
-      </RadioGroup>
+      </FormGroup>
       {Boolean(errorMessage) && <FormHelperText>{errorMessage}</FormHelperText>}
     </FormControl>
   );
 }
 
-export default withFormsy(RadioGroupFormsy);
+export default withFormsy(CheckboxGroupFormsy);

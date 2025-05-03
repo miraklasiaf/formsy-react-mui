@@ -1,23 +1,36 @@
 'use client';
 import React from 'react';
-import {
-  CardContent,
-  CardActions,
-  Container,
-  Button,
-  FormControlLabel,
-  Grid,
-  Radio,
-  Typography,
-} from '@mui/material';
+import { CardContent, CardActions, Container, Button, Grid, Typography } from '@mui/material';
 import {
   FormsyContainer,
   CheckboxFormsy,
+  CheckboxGroupFormsy,
   RadioGroupFormsy,
   TextFieldFormsy,
 } from 'formsy-react-mui';
 import { Panel } from './panel';
 import isEmpty from 'lodash-es/isEmpty';
+
+const genders = [
+  {
+    value: '1',
+    label: 'Male',
+  },
+  {
+    value: '2',
+    label: 'Female',
+  },
+];
+const roles = [
+  {
+    value: '1',
+    label: 'Admin',
+  },
+  {
+    value: '2',
+    label: 'User',
+  },
+];
 
 export default function Home() {
   const [formData, setFormData] = React.useState({});
@@ -29,6 +42,9 @@ export default function Home() {
     }
     if (!model.genderId) {
       sb.genderId = 'This field is required.';
+    }
+    if (!model.roles || model.roles.length === 0) {
+      sb.roles = 'This field is required.';
     }
     if (!model.acceptTos) {
       sb.acceptTos = 'This field is required.';
@@ -62,10 +78,16 @@ export default function Home() {
                     <TextFieldFormsy value="" name="fullName" label="Full Name" />
                   </Grid>
                   <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-                    <RadioGroupFormsy value="" name="genderId" label="Gender" row>
-                      <FormControlLabel value="1" control={<Radio />} label="Male" />
-                      <FormControlLabel value="2" control={<Radio />} label="Female" />
-                    </RadioGroupFormsy>
+                    <RadioGroupFormsy
+                      value=""
+                      name="genderId"
+                      label="Gender"
+                      options={genders}
+                      row
+                    />
+                  </Grid>
+                  <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+                    <CheckboxGroupFormsy value="" name="roles" label="Role" options={roles} />
                   </Grid>
                   <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
                     <CheckboxFormsy value="" name="acceptTos" label="I Accept the TOS" />

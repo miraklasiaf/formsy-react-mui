@@ -1,30 +1,69 @@
 # Formsy React MUI
 
-## About
-
 This project simplifies the use of [`formsy-react`](https://github.com/formsy-react/formsy-react)
 and [`Material-UI`](https://github.com/mui/material-ui). It provides opinionated use cases with following
 components:
 
 - FormContainer
-- TextFieldFormsy
+- CheckboxFormsy
+- CheckboxGroupFormsy
 - RadioGroupFormsy
+- TextFieldFormsy
 - TBD
 
-## How to use it
-
-### Installation
+### Install
 
 ```sh
-# with npm
-$ npm install formsy-react-mui formsy-react @mui/material
+    npm install formsy-react-mui formsy-react @mui/material
+```
 
-# with Yarn
-$ yarn add formsy-react-mui formsy-react @mui/material
+### Quickstart
 
-# with pnpm
-$ pnpm add formsy-react-mui formsy-react @mui/material
+```jsx
+import {
+  CheckboxFormsy,
+  CheckboxGroupFormsy,
+  FormsyContainer,
+  RadioGroupFormsy,
+  TextFieldFormsy,
+} from 'formsy-react-mui';
 
-# with Bun
-$ bun add formsy-react-mui formsy-react @mui/material
+const genders = [
+  {
+    value: '1',
+    label: 'Male',
+  },
+  {
+    value: '2',
+    label: 'Female',
+  },
+];
+const roles = [
+  {
+    value: '1',
+    label: 'Admin',
+  },
+  {
+    value: '2',
+    label: 'User',
+  },
+];
+
+function App() {
+  function onSubmit(model, resetForm, invalidateForm) {
+    console.log('Form submitted:', model);
+  }
+
+  return (
+    <FormsyContainer autoComplete="off" onChange={onChange} onSubmit={onSubmit}>
+      <TextFieldFormsy value="" name="fullName" label="Full Name" />
+      <RadioGroupFormsy value="" name="genderId" label="Gender" options={genders} row />
+      <CheckboxGroupFormsy value="" name="roles" label="Role" options={roles} />
+      <CheckboxFormsy value="" name="acceptTos" label="I Accept the TOS" />
+      <Button variant="contained" type="submit">
+        Submit
+      </Button>
+    </FormsyContainer>
+  );
+}
 ```

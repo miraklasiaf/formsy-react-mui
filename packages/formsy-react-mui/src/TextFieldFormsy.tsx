@@ -2,10 +2,12 @@ import { withFormsy } from 'formsy-react';
 import { TextField, TextFieldProps } from '@mui/material';
 
 type Props = TextFieldProps & {
+  //formsy-react props
   errorMessage?: string;
   isPristine?: boolean;
   setValue: (value: any) => void;
   showRequired?: boolean;
+  value?: any;
 };
 
 function TextFieldFormsy(props: Props) {
@@ -36,9 +38,7 @@ function TextFieldFormsy(props: Props) {
     type = 'text',
     variant = 'outlined',
   } = props;
-
-  const { errorMessage, isPristine, showRequired } = props;
-  const value = props.value || '';
+  const { errorMessage, value = '', isPristine, showRequired } = props;
 
   const importedProps = {
     autoComplete,

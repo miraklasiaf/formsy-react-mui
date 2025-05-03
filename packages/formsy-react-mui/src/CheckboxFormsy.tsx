@@ -8,13 +8,14 @@ import {
 } from '@mui/material';
 
 type Props = CheckboxProps & {
-  errorMessage?: string;
-  isPristine?: boolean;
   label: string;
   required?: boolean;
-  value?: boolean;
+  //formsy-react props
+  errorMessage?: string;
+  isPristine?: boolean;
   setValue: (value: any) => void;
   showRequired?: boolean;
+  value?: boolean;
 };
 
 function CheckboxFormsy(props: Props) {
