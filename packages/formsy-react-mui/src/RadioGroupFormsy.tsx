@@ -29,7 +29,7 @@ type Props = RadioGroupProps & {
 };
 
 function RadioGroupFormsy(props: Props) {
-  const { defaultValue, disabled, label, name, options = [], row } = props;
+  const { defaultValue, disabled, label, name, options = [], required = false, row } = props;
   const { errorMessage, value } = props;
 
   function changeValue(event: React.ChangeEvent<HTMLInputElement>, val: string) {
@@ -44,6 +44,7 @@ function RadioGroupFormsy(props: Props) {
       component="fieldset"
       error={Boolean((!props.isPristine && props.showRequired) || errorMessage)}
       className={props.className}
+      required={required}
     >
       {label && <FormLabel component="legend">{label}</FormLabel>}
       <RadioGroup

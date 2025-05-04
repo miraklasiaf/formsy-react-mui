@@ -69,7 +69,7 @@ export default function Home() {
   return (
     <Container maxWidth="xl" sx={{ marginTop: '28px' }}>
       <Grid container spacing={2}>
-        <Grid size={7}>
+        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 7 }}>
           <FormsyContainer autoComplete="off" onChange={onChange} onSubmit={onSubmit}>
             <Panel panelTitle="Form Example">
               <CardContent>
@@ -114,7 +114,7 @@ export default function Home() {
             </Panel>
           </FormsyContainer>
         </Grid>
-        <Grid size={5}>
+        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 5 }}>
           <div className="p-6">
             <div className="mb-3">
               <Typography>Form Data:</Typography>

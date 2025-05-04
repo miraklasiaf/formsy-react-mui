@@ -23,7 +23,7 @@ function CheckboxFormsy(props: Props) {
     checkedIcon,
     classes,
     color,
-    disabled,
+    disabled = false,
     disableRipple,
     icon,
     id,

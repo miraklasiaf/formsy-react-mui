@@ -29,7 +29,7 @@ type Props = CheckboxProps & {
 };
 
 function CheckboxGroupFormsy(props: Props) {
-  const { label, options = [], row } = props;
+  const { disabled, label, options = [], required = false, row } = props;
   const { errorMessage, value = [] } = props;
 
   function changeValue(event: React.ChangeEvent<HTMLInputElement>) {
@@ -50,6 +50,7 @@ function CheckboxGroupFormsy(props: Props) {
       component="fieldset"
       error={Boolean((!props.isPristine && props.showRequired) || errorMessage)}
       className={props.className}
+      required={required}
     >
       {label && <FormLabel component="legend">{label}</FormLabel>}
       <FormGroup row={row}>
@@ -67,7 +68,7 @@ function CheckboxGroupFormsy(props: Props) {
                   value={optionValue}
                   checked={checked}
                   onChange={changeValue}
-                  disabled={optionDisabled}
+                  disabled={disabled || optionDisabled}
                 />
               }
               label={optionLabel}

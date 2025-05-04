@@ -4,7 +4,7 @@ This project simplifies the use of [`formsy-react`](https://github.com/formsy-re
 and [`Material-UI`](https://github.com/mui/material-ui). It provides opinionated use cases with following
 components:
 
-- FormContainer
+- FormsyContainer
 - CheckboxFormsy
 - CheckboxGroupFormsy
 - RadioGroupFormsy
@@ -14,7 +14,7 @@ components:
 ### Install
 
 ```sh
-    npm install formsy-react-mui formsy-react @mui/material
+npm install formsy-react-mui formsy-react @mui/material
 ```
 
 ### Quickstart
